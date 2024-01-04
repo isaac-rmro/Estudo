@@ -86,7 +86,7 @@ Amanhã tem treino pesado 💪
 ## Tabela
 Para separar os titulos usa-se **\|Titulo 1\|Titulo 2\|Titulo 3**                              
 Logo abaixo deve conter a formatação guiada pelos símbolos (\\::) e (\\---)                              
-**\--- Formatação padrao**                        
+**\--- Formatação padrão**                        
 **\:--- Formatação à esquerda**                    
 **\:---: Formatação centralizada**                        
 **\---: Formatação à direita**                     
