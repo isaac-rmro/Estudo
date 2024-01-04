@@ -88,11 +88,11 @@ Logo abaixo deve conter a formatação guiada pelos símbolos (\\::) e (\\---)
 **\:---: Formatação centralizada**                        
 **\---: Formatação à direita**                     
 E assim completar a tabela                    
-\Ano Nascimento | Nome | Profissão                 
+Ano Nascimento | Nome | Profissão                 
 \:---: | ---: | :---               
-\2001 | Alfredo | Carpinteiro             
-\1967 | Adair | \~~Aposentado~~               
-\1980 | José | Design                   
+2001 | Alfredo | Carpinteiro             
+1967 | Adair | \~~Aposentado~~               
+1980 | José | Design                   
 **Exemplo:**                                
 Ano Nascimento | Nome | Profissão
 :---: | ---: | :---
