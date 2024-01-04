@@ -35,7 +35,10 @@ Um to-do list
 - [x] Ver um bonito por do sol
 ## Títulos e Linhas horizontais
 Os títulos funcionam na mesma semântica da **HTML**            
-**Símbolos utilizados: (\# Título nivel 1) (\## Título nivel 2) (\### Título nivel 3)**
+**Símbolos utilizados:**
+(\# Título nivel 1)                    
+(\## Título nivel 2)          
+(\### Título nivel 3)          
 # Título nivel 1
 ## Título nivel 2
 Linhas horizontais se asemelham também a tag **(hr)**                           
