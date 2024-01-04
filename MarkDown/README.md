@@ -62,7 +62,7 @@ print(f'Olá bem vindo ao meu github {nome}, espero que aproveite ;)')
 ```
 ## Ligação entre conteúdos
 ### Citação
-usa-se o simbolo **\>** a cada linha da citação
+usa-se o simbolo **\>** a cada linha da citação                                    
 Como **Steve Jobs** disse uma vez:
 > Desing é função,                                         
 >  não forma
@@ -73,7 +73,7 @@ Mencionar **Pull e Requests** utilizando o (#: jogo da velha) e o número do ele
 ## Símbolos
 ### Escapando das formatações
 Eu utilizei este metodo para mostrar como é utilizada cada formatação                          
-Basta por **uma barra invertida antes dos simbolos (\)**                          
+Basta por **uma barra invertida antes dos simbolos ( \ )**                          
 É possivel criar titulos usando \# Título nivel 1                      
 ### Emojis
 Entre símbolos faça \:nomeDoEmojiEmInglês:                 
