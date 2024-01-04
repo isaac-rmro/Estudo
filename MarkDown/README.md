@@ -25,7 +25,7 @@ Os saltos entre linhas são de fato **mais importantes que os números nas lista
 5. Cachorro
 ### Lista com Marcadores
 * Usa se o \*
-  * E adicionar dois espaços desde a borda ira adicionar uma **sub-tarefa**
+  * Por dois espaços desde a borda ira adicionar uma **sub-tarefa**
 * Dica que aprendi no curso ;)
 ### Lista de Tarefas
 Um to-do list               
