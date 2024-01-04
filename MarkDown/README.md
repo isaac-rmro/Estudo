@@ -15,7 +15,7 @@ De forma criativa podemos misturar _Italico_ com **Negrito** e ainda dar um ~~st
 \~~\_\*\\*Soup**_~~ : ~~_**Soup**_~~
 ## Listas 
 ### Listas Numeradas 
-Os saltos entre linhas são de fato **mais que importantes que os números nas listas**                
+Os saltos entre linhas são de fato **mais importantes que os números nas listas**                
 **Digite \1. Algo e adicione o que quiser a elas**                       
 **Top 5 melhores animais**
 1. Gatos
