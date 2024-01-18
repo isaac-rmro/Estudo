@@ -1,7 +1,6 @@
 algoritmo "Jogos"
 var
-  Opcao: Inteiro
-  Resposta: Caractere
+  Opcao,OpcaoJogo: Inteiro
   
 Procedimento Menu() //Menu do aplicativo
 inicio
@@ -16,7 +15,7 @@ inicio
     EscrevaL("----------------------------------")
     EscrevaL("   2 JOGADORES     |  1 JOGADOR   ")
     EscrevaL("[1] - JOGO DA VELHA| [3] - ADVINHA")
-    EscrevaL("[2] - JOKENPO      | [] - ????    ")
+    EscrevaL("[2] - JOKEMPO      | [] - ????    ")
     EscrevaL("----------------------------------")
     EscrevaL()
     Escreva("ESCOLHA UMA OPÇÃO: ")
@@ -25,8 +24,17 @@ inicio
   Ate(Opcao > 0) e (Opcao < 5)
 FimProcedimento
 
+Procedimento MenuJogoVelha() //Menu jogo da velha
+inicio
+  EscrevaL("BEM VINDO AO JOGO DA VELHA")
+  EscrevaL("[1] MANUAL")
+  EscrevaL("[2] PROSSEGUIR PARA O JOGO")
+    Leia(OpcaoJogo)
+FimProcedimento
+
 Procedimento ManualJogoVelha() //Manual jogo da velha
 inicio
+  LimpaTela
   EscrevaL("MANUAL DO JOGO DA VELHA")
   EscrevaL("OBJETIVO")
   Escreva(" * Formar uma linha de três símbolos (X ou O) em linha ")
@@ -34,39 +42,75 @@ inicio
   Escreva(" * Jogadores alternam turnos, escolhendo uma célula vazia ")
   EscrevaL("para colocar seu símbolo.")
   Escreva(" * Ganhe formando 3 símbolos em linha. Se o tabuleiro lota ")
-  Escreva(" sem vencedor, é empate.")
-  Escreva("Deseja voltar ao menu [S/N]: ")
+  EscrevaL(" sem vencedor, é empate.")
+FimProcedimento
+
+Procedimento MenuJokempo() //Menu Jokempo
+inicio
+  EscrevaL("BEM VINDO AO JOKEMPO")
+  EscrevaL("[1] MANUAL")
+  EscrevaL("[2] PROSSEGUIR PARA O JOGO")
+    Leia(OpcaoJogo)
+FimProcedimento
+
+Procedimento ManualJokempo() //Manual Jokempo
+inicio
+  LimpaTela
+  EscrevaL("MANUAL DO JOGO JOKEMPO")
+  EscrevaL("OBJETIVO")
+  Escreva(" * Vencer o oponente escolhendo entre pedra, papel ou tesoura,")
+  EscrevaL("escolhas iguais resultam em empate.")
+  EscrevaL(" * Pedra esmaga tesoura, papel cobre pedra, tesoura corta papel.")
+FimProcedimento
+
+Procedimento MenuAdvinha()//Menu Advinha
+inicio
+  EscrevaL("BEM VINDO AO JOGO ADVINHA")
+  EscrevaL("[1] MANUAL")
+  EscrevaL("[2] PROSSEGUIR PARA O JOGO")
+    Leia(OpcaoJogo)
+FimProcedimento
+
+Procedimento ManualAdvinha()//Manual Advinha
+inicio
+  LimpaTela
+  EscrevaL("MANUAL DO JOGO ADVINHA")
+  EscrevaL("OBJETIVO")
+  EscrevaL(" * Adivinhar o número escolhido pelo robô,")
 FimProcedimento
 
 inicio
   Menu()
   Escolha Opcao
     Caso 1
-      Repita
-        Opcao <- 0
-        EscrevaL("BEM VINDO AO JOGO DA VELHA")
-        EscrevaL("[1] MANUAL")
-        EscrevaL("[2] PROSSEGUIR PARA O JOGO")
-        Leia(Opcao)
-        LimpaTela
-      Ate(Resposta = "N") ou (Resposta = "n")
-        Escolha Opcao
-          Caso 1
-            ManualJogoVelha()
-          Caso 2
-            Escreva("Teste 2")
-        FimEscolha
+      OpcaoJogo <- 0
+      MenuJogoVelha()
+      Se (OpcaoJogo = 1)entao
+        ManualJogoVelha()
+      senao
+        Se(OpcaoJogo = 2)entao
+          //Jogo
+        FimSe
+      FimSe
     Caso 2
-      Opcao <- 0
-      EscrevaL("BEM VINDO AO JOKEMPO")
-      EscrevaL("[1] MANUAL")
-      EscrevaL("[2] PROSSEGUIR PARA O JOGO")
-        Leia(Opcao)
-      Escolha Opcao
-        Caso 1
-        Caso 2
-      FimEscolha
+      OpcaoJogo <- 0
+      MenuJokempo()
+      Se (OpcaoJogo = 1)entao
+        ManualJokempo()
+      senao
+        Se(OpcaoJogo = 2)entao
+          //Jogo
+        FimSe
+      FimSe
     Caso 3
-
+      OpcaoJogo <- 0
+      MenuAdvinha()
+      Se (OpcaoJogo = 1)entao
+        ManualAdvinha()
+      senao
+        Se (OpcaoJogo = 2)entao
+        //Jogo
+        FimSe
+      FimSe
   FimEscolha
 fimalgoritmo
