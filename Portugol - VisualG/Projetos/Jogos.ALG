@@ -1,14 +1,24 @@
 algoritmo "Jogos"
 var
   Opcao,OpcaoJogo: Inteiro
+  I: Inteiro
+  //Variaveis Jokempo
+  JokempoJoga: vetor[1..2] de Inteiro
+  GanhaJokempo: Caractere
+  //Variaveis Adivinha
+  AdvinhaTent: Inteiro
+  Robo: Inteiro
+  Cr: Inteiro
+  AdNum: Inteiro
+  GanhaAd: Caractere
   
 Procedimento Menu() //Menu do aplicativo
 inicio
-  Repita
+  Enquanto (Opcao < 1) ou (Opcao > 3)faca
     EscrevaL("+------------------------------+")
     EscrevaL("|                              |")
     EscrevaL("|       JOGOS EM PORTUGOL      | DESENVOLVEDOR: Isaac Romero")
-    EscrevaL("|                              | ATUALIZAÇÃO RECENTE: 18/01/2024")
+    EscrevaL("|                              | ATUALIZAÇÃO RECENTE: 19/01/2024")
     EscrevaL("+------------------------------+")
 
     EscrevaL("JOGOS DISPONÍVEIS")
@@ -21,7 +31,7 @@ inicio
     Escreva("ESCOLHA UMA OPÇÃO: ")
       Leia(Opcao)
     LimpaTela
-  Ate(Opcao > 0) e (Opcao < 5)
+  FimEnquanto
 FimProcedimento
 
 Procedimento MenuJogoVelha() //Menu jogo da velha
@@ -63,6 +73,34 @@ inicio
   EscrevaL(" * Pedra esmaga tesoura, papel cobre pedra, tesoura corta papel.")
 FimProcedimento
 
+Procedimento Jokempo()
+inicio
+  Para I de 1 ate 2 faca
+    Enquanto (JokempoJoga[I] < 1) ou (JokempoJoga[I] > 3)faca
+      EscrevaL("JOGADOR: ", I)
+      EscrevaL("[1] PEDRA")
+      EscrevaL("[2] PAPEL")
+      EscrevaL("[3] TESOURA")
+      Escreva("DIGITE SUA ESCOLHA: ")
+        Leia(JokempoJoga[I])
+      LimpaTela
+    FimEnquanto
+  FimPara
+FimProcedimento
+
+Funcao VerJokempo(J1, J2: Inteiro): Caractere
+inicio
+  Se (J1 = J2)entao
+    Retorne "EMPATE"
+  senao
+    Se ((J1 = 1) e (J2 = 3)) ou ((J1 = 2) e (J2 = 1)) ou ((J1 = 3) e (J2 = 2))entao
+      Retorne "JOGADOR 1 VENCEU"
+    senao
+      Retorne "JOGADOR 2 VENCEU"
+    FimSe
+  FimSe
+FimFuncao
+
 Procedimento MenuAdvinha()//Menu Advinha
 inicio
   EscrevaL("BEM VINDO AO JOGO ADVINHA")
@@ -78,6 +116,43 @@ inicio
   EscrevaL("OBJETIVO")
   EscrevaL(" * Adivinhar o número escolhido pelo robô,")
 FimProcedimento
+
+Procedimento Advinha()
+inicio
+  Cr <- 0
+  EscrevaL("NUMERO DE TENTATIVAS PERMITIDAS ATUALMENTE: 10")
+  Escreva("APOSTA QUANTAS TENTATIVAS PARA VENCER MEU ROBO? ")
+    Leia(AdvinhaTent)
+    
+  Robo <- Randi(10) + 1
+  
+  Repita
+    Cr <- Cr + 1
+    EscrevaL("TENTIVA: ", Cr)
+    Escreva("ESCOLHA UM NUMERO: ")
+      Leia(AdNum)
+    Se (AdNum <> Robo)entao
+      Escreva("ERROU")
+      EscrevaL()
+    FimSe
+    EscrevaL()
+    Se (Adnum = Robo) e (Cr = AdvinhaTent)entao
+      Cr <- Cr - 1
+    FimSe
+  Ate (AdNum = Robo) ou (Cr = AdvinhaTent)
+  
+FimProcedimento
+
+Funcao VerAdvinha(T, R, C, AdT: Inteiro): Caractere
+inicio
+  Se (T = R)entao
+    Retorne "VOCÊ GANHOU DESTA VEZ"
+  senao
+    Se (T <> R) e (C = AdT)entao
+      Retorne "PERDEU PARA O MEU ROBO HAHA"
+    FimSe
+  FimSe
+FimFuncao
 
 inicio
   Menu()
@@ -99,7 +174,10 @@ inicio
         ManualJokempo()
       senao
         Se(OpcaoJogo = 2)entao
-          //Jogo
+          LimpaTela
+          Jokempo()
+          GanhaJokempo <- VerJokempo(JokempoJoga[1],JokempoJoga[2])
+          Escreva("PARABÉNS O ",GanhaJokempo)
         FimSe
       FimSe
     Caso 3
@@ -108,8 +186,11 @@ inicio
       Se (OpcaoJogo = 1)entao
         ManualAdvinha()
       senao
+        LimpaTela
         Se (OpcaoJogo = 2)entao
-        //Jogo
+          Advinha()
+          GanhaAd <- VerAdvinha(AdNum,Robo,Cr,AdvinhaTent)
+          Escreva(GanhaAd)
         FimSe
       FimSe
   FimEscolha
