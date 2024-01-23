@@ -11,14 +11,21 @@ var
   Cr: Inteiro
   AdNum: Inteiro
   GanhaAd: Caractere
-  
+  //Variaveis Jogo da Velha
+  M: vetor[1..3,1..3] de Caractere
+  l, c: Inteiro
+  Simb: Caractere
+  Po: Caractere
+  GanhaVelha: Logico
+  DeuVelha: Logico
+  Cont: Inteiro
 Procedimento Menu() //Menu do aplicativo
 inicio
   Enquanto (Opcao < 1) ou (Opcao > 3)faca
     EscrevaL("+------------------------------+")
     EscrevaL("|                              |")
     EscrevaL("|       JOGOS EM PORTUGOL      | DESENVOLVEDOR: Isaac Romero")
-    EscrevaL("|                              | ATUALIZAÇÃO RECENTE: 19/01/2024")
+    EscrevaL("|                              | ATUALIZAÇÃO RECENTE: 23/01/2024")
     EscrevaL("+------------------------------+")
 
     EscrevaL("JOGOS DISPONÍVEIS")
@@ -53,6 +60,83 @@ inicio
   EscrevaL("para colocar seu símbolo.")
   Escreva(" * Ganhe formando 3 símbolos em linha. Se o tabuleiro lota ")
   EscrevaL(" sem vencedor, é empate.")
+FimProcedimento
+
+Procedimento Velha() //Jogo da velha
+inicio
+  EscrevaL("  1   2   3")
+  EscrevaL("+-----------+")
+  Para l de 1 ate 3 faca
+    Para c de 1 ate 3 faca
+      Se (c = 1)entao
+        Escreva("| ", M[l,c]:2, "|")
+      senao
+        Se (c = 2)entao
+          Escreva(" ", M[l,c]:2, "|")
+        senao
+          Se (c = 3)entao
+            Escreva(" ", M[l,c]:2, "| ", l)
+          FimSe
+        FimSe
+      FimSe
+    FimPara
+    EscrevaL()
+  EscrevaL("+-----------+")
+  FimPara
+FimProcedimento
+
+Procedimento Preenche()
+inicio
+  Para l de 1 ate 3 faca
+    Para c de 1 ate 3 faca
+      Se (Po = M[l,c])entao
+        M[l,c] <- Simb
+      FimSe
+    FimPara
+  FimPara
+    LimpaTela
+FimProcedimento
+
+Funcao Jogada(J: Caractere): Caractere
+inicio
+  Se (J = "X")entao
+    Retorne "O"
+  senao
+    Se (J = "O")entao
+      Retorne "X"
+    FimSe
+  Fimse
+FimFuncao
+
+Procedimento VerGanhador()
+inicio
+  Para l de 1 ate 3 faca
+    Se (M[l,1] = M[l,2]) e (M[l,2] = M[l,3])entao
+      GanhaVelha <- Verdadeiro
+    FimSe
+  FimPara
+
+  Para c de 1 ate 3 faca
+    Se (M[1,c] = M[2,c]) e (M[2,c] = M[3,c])entao
+      GanhaVelha <- Verdadeiro
+    FimSe
+  FimPara
+
+  Se (M[1,1] = M[2,2]) e (M[2,2] = M[3,3])entao
+      GanhaVelha <- Verdadeiro
+  FimSe
+
+  Se (M[1,3] = M[2,2]) e (M[2,2] = M[3,1])entao
+      GanhaVelha <- Verdadeiro
+  FimSe
+FimProcedimento
+
+Procedimento Empate()
+inicio
+  Cont <- Cont + 1
+  Se (Cont = 9)entao
+    DeuVelha <- Verdadeiro
+  FimSe
 FimProcedimento
 
 Procedimento MenuJokempo() //Menu Jokempo
@@ -164,7 +248,27 @@ inicio
         ManualJogoVelha()
       senao
         Se(OpcaoJogo = 2)entao
-          //Jogo
+          LimpaTela
+          I <- 1
+          Simb <- "X"
+          GanhaVelha <- Falso
+          DeuVelha <- Falso
+          Para l de 1 ate 3 faca
+            Para c de 1 ate 3 faca
+              M[l,c] <- NumpCarac(I)
+              I <- I + 1
+            FimPara
+          FimPara
+          Velha()
+          Repita
+            Escreva("EM QUE POSIÇÃO VAI JOGAR O '",Simb,"': ")
+              Leia(Po)
+            Preenche()
+            Velha()
+            VerGanhador()
+            Empate()
+            Simb <- Jogada(Simb)
+          Ate (GanhaVelha = Verdadeiro) ou (DeuVelha = Verdadeiro)
         FimSe
       FimSe
     Caso 2
