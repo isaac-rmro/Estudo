@@ -31,7 +31,7 @@ inicio
     EscrevaL("+------------------------------+")
     EscrevaL("|                              |")
     EscrevaL("|       JOGOS EM PORTUGOL      | DESENVOLVEDOR: Isaac Romero")
-    EscrevaL("|                              | ATUALIZAÇÃO RECENTE: 19/01/2024")
+    EscrevaL("|                              | ATUALIZAÇÃO RECENTE: 24/01/2024")
     EscrevaL("+------------------------------+")
 
     EscrevaL("JOGOS DISPONÍVEIS")
