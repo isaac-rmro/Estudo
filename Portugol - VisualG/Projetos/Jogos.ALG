@@ -1,7 +1,10 @@
 algoritmo "Jogos"
 var
+  //Variaveis multi funcionais
   Opcao,OpcaoJogo: Inteiro
   I: Inteiro
+  Resposta: Caractere
+  RespostaMenu: Caractere
   //Variaveis Jokempo
   JokempoJoga: vetor[1..2] de Inteiro
   GanhaJokempo: Caractere
@@ -16,16 +19,19 @@ var
   l, c: Inteiro
   Simb: Caractere
   Po: Caractere
+  VerPo: Logico
   GanhaVelha: Logico
   DeuVelha: Logico
   Cont: Inteiro
+  
+//Aplicativo
 Procedimento Menu() //Menu do aplicativo
 inicio
   Enquanto (Opcao < 1) ou (Opcao > 3)faca
     EscrevaL("+------------------------------+")
     EscrevaL("|                              |")
     EscrevaL("|       JOGOS EM PORTUGOL      | DESENVOLVEDOR: Isaac Romero")
-    EscrevaL("|                              | ATUALIZAÇÃO RECENTE: 23/01/2024")
+    EscrevaL("|                              | ATUALIZAÇÃO RECENTE: 19/01/2024")
     EscrevaL("+------------------------------+")
 
     EscrevaL("JOGOS DISPONÍVEIS")
@@ -41,12 +47,19 @@ inicio
   FimEnquanto
 FimProcedimento
 
+//-----------------------------------------------------
+//Jogo da velha
 Procedimento MenuJogoVelha() //Menu jogo da velha
 inicio
-  EscrevaL("BEM VINDO AO JOGO DA VELHA")
-  EscrevaL("[1] MANUAL")
-  EscrevaL("[2] PROSSEGUIR PARA O JOGO")
-    Leia(OpcaoJogo)
+  Repita
+    EscrevaL("BEM VINDO AO JOGO DA VELHA")
+    EscrevaL("[1] MANUAL")
+    EscrevaL("[2] PROSSEGUIR PARA O JOGO")
+      Leia(OpcaoJogo)
+    Se (OpcaoJogo > 2) ou (OpcaoJogo < 1)entao
+      LimpaTela
+    FimSe
+  Ate (OpcaoJogo > 0) e (OpcaoJogo < 3)
 FimProcedimento
 
 Procedimento ManualJogoVelha() //Manual jogo da velha
@@ -139,12 +152,29 @@ inicio
   FimSe
 FimProcedimento
 
+Funcao ParabensVelha(S: Caractere): Caractere
+inicio
+  Se (Simb = "X")entao
+    Retorne "O"
+  senao
+    Se (Simb = "O")entao
+      Retorne "X"
+    FimSe
+  FimSe
+FimFuncao
+//-----------------------------------------------------
+//Jokempo
 Procedimento MenuJokempo() //Menu Jokempo
 inicio
-  EscrevaL("BEM VINDO AO JOKEMPO")
-  EscrevaL("[1] MANUAL")
-  EscrevaL("[2] PROSSEGUIR PARA O JOGO")
-    Leia(OpcaoJogo)
+  Repita
+    EscrevaL("BEM VINDO AO JOKEMPO")
+    EscrevaL("[1] MANUAL")
+    EscrevaL("[2] PROSSEGUIR PARA O JOGO")
+      Leia(OpcaoJogo)
+    Se (OpcaoJogo < 1) ou (OpcaoJogo > 2)entao
+      LimpaTela
+    FimSe
+  Ate (OpcaoJogo > 0) e (OpcaoJogo < 3)
 FimProcedimento
 
 Procedimento ManualJokempo() //Manual Jokempo
@@ -185,12 +215,19 @@ inicio
   FimSe
 FimFuncao
 
+//-----------------------------------------------------
+//Jogo do advinha
 Procedimento MenuAdvinha()//Menu Advinha
 inicio
-  EscrevaL("BEM VINDO AO JOGO ADVINHA")
-  EscrevaL("[1] MANUAL")
-  EscrevaL("[2] PROSSEGUIR PARA O JOGO")
-    Leia(OpcaoJogo)
+  Repita
+    EscrevaL("BEM VINDO AO JOGO ADVINHA")
+    EscrevaL("[1] MANUAL")
+    EscrevaL("[2] PROSSEGUIR PARA O JOGO")
+      Leia(OpcaoJogo)
+    Se (OpcaoJogo < 1) ou (OpcaoJogo > 2)entao
+      LimpaTela
+    FimSe
+  Ate (OpcaoJogo > 0) e (OpcaoJogo < 3)
 FimProcedimento
 
 Procedimento ManualAdvinha()//Manual Advinha
@@ -198,7 +235,8 @@ inicio
   LimpaTela
   EscrevaL("MANUAL DO JOGO ADVINHA")
   EscrevaL("OBJETIVO")
-  EscrevaL(" * Adivinhar o número escolhido pelo robô,")
+  EscrevaL(" * Adivinhar o número escolhido pelo robô, pode se escolher")
+  Escreva("quantas tentativas irá precisar para acertar.")
 FimProcedimento
 
 Procedimento Advinha()
@@ -238,7 +276,11 @@ inicio
   FimSe
 FimFuncao
 
+//-----------------------------------------------------
+//Inicio do programa
 inicio
+  RespostaMenu <- "S"
+  Resposta <- "S"
   Menu()
   Escolha Opcao
     Caso 1
@@ -271,6 +313,10 @@ inicio
           Ate (GanhaVelha = Verdadeiro) ou (DeuVelha = Verdadeiro)
         FimSe
       FimSe
+      Simb <- ParabensVelha(Simb)
+      EscrevaL()
+      Escreva("Parabens o jogador (", Simb, ") ganhou :)")
+//-----------------------------------------------------
     Caso 2
       OpcaoJogo <- 0
       MenuJokempo()
@@ -284,6 +330,7 @@ inicio
           Escreva("PARABÉNS O ",GanhaJokempo)
         FimSe
       FimSe
+//-----------------------------------------------------
     Caso 3
       OpcaoJogo <- 0
       MenuAdvinha()
