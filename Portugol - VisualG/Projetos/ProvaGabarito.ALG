@@ -1,11 +1,4 @@
-algoritmo "Ex006"
-//6. Faça um programa para corrigir uma prova com 10 questões de múltipla
-//escolha (a, b, c, d ou e), em uma turma com 3 alunos. Cada questão vale 1
-//ponto. Leia o gabarito, e para cada aluno leia sua matrícula (número inteiro)
-//e suas respostas. Calcule e escreva: para cada aluno, escreva sua matrícula,
-//suas respostas e sua nota. Também informe se o aluno foi aprovado ou
-//reprovado. O valor de aprovação é 7 na média das notas.
-
+algoritmo "ProvaGabarito"
 var
   I, J, Cont: Inteiro //Var's contadoras
   Gabarito: Vetor[1..10] de Caractere //Vetor para guarda de gabarito
