@@ -12,7 +12,9 @@ var
   EscalaDor: Inteiro
   EscalaDor1a10: Logico
   ClassPA, ClassBPM, ClassRPM, ClassTAX, ClassDOR: Caractere
-
+  VetResposta, VetMsg: Vetor[0..4] de Caractere
+  VetParametro: Vetor[0..4] de Real
+  
 Procedimento Limpa()
 inicio
   Para I de 1 ate 6 faca
@@ -34,6 +36,21 @@ inicio
   Escreva("Sua idade: ")
     Leia(Idade)
   LimpaTela
+FimProcedimento
+
+Procedimento Resultado()
+inicio
+  EscrevaL("+            +")
+  EscrevaL("+ RESULTADOS +")
+  EscrevaL("+            +")
+  
+  EscrevaL()
+  
+  EscrevaL("NOME: ", Usuario)
+  EscrevaL("IDADE: ", Idade)
+  
+  EscrevaL()
+
 FimProcedimento
 
 Funcao VerIdade(id: Inteiro): Logico
@@ -68,7 +85,7 @@ Funcao VerEscalaDor(numero: Inteiro): Logico
 var
   verEscala: Logico
 inicio
-  Se(numero > 0) e (numero <= 10)entao
+  Se(numero >= 0) e (numero <= 10)entao
     verEscala <- Verdadeiro
   senao
     verEscala <- Falso
@@ -238,4 +255,37 @@ inicio
   FimEscolha
   LimpaTela
   Ate(Opcao = 6)
+  
+  VetResposta[0] <- ClassPA
+  VetResposta[1] <- ClassBPM
+  VetResposta[2] <- ClassRPM
+  VetResposta[3] <- ClassTAX
+  VetResposta[4] <- ClassDOR
+
+  VetParametro[1] <- BPM
+  VetParametro[2] <- RPM
+  VetParametro[3] <- TAX
+  VetParametro[4] <- EscalaDor
+
+  VetMsg[0] <- "PA: "
+  VetMsg[1] <- "BPM: "
+  VetMsg[2] <- "RPM: "
+  VetMsg[3] <- "TAX: "
+  VetMsg[4] <- "ESCALA DOR: "
+
+  Resultado()
+
+  Se (VetResposta[0] <> "")entao
+    EscrevaL(VetMsg[0], PA[0], " x", PA[1], " ( ", VetResposta[0], " )")
+  FimSe
+
+  Para I de 1 ate 4 faca
+    Se(VetResposta[I] <> "")entao
+      EscrevaL(VetMsg[I], VetParametro[I], " ( ", VetResposta[I], " )")
+    FimSe
+  FimPara
+  
+  EscrevaL()
+  
+  EscrevaL(";) - ATÉ A PROXIMA, PABLITO ENCERRANDO")
 fimalgoritmo
