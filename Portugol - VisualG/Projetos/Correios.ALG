@@ -20,7 +20,7 @@ inicio
   EscrevaL("======================================")
   EscrevaL()
 
-  Escreva("USUARIO: ")
+  Escreva("USUARIO: ") //Cadastra um usuario
     Leia(User)
 FimProcedimento
 
@@ -37,7 +37,7 @@ inicio
   Ate(Qtd > 0) e (Qtd <= 5)
 FimProcedimento
   
-Procedimento Data()
+Procedimento Data() //Valida data e a obtem
 inicio
   EscrevaL("========================")
   EscrevaL("DATA DE ENVIO dd/mm/yy")
@@ -67,7 +67,7 @@ inicio
   LimpaTela
 FimProcedimento
 
-Procedimento TipoPacote()
+Procedimento TipoPacote() //Rotula os pacotes
 inicio
   Para I de 1 ate Qtd faca
     Repita
@@ -81,7 +81,7 @@ inicio
   FimPara
 FimProcedimento
 
-Funcao VerTip(t: Caractere): Caractere
+Funcao VerTip(t: Caractere): Caractere //Assimila os pacotes a certas posicoes
 var
   msg: Caractere
 inicio
@@ -99,7 +99,7 @@ inicio
   Retorne msg
 FimFuncao
   
-Procedimento VerDimensao
+Procedimento VerDimensao //Guarda a dimensao do pacote
 inicio
   EscrevaL("========================")
   EscrevaL("DIMENSÕES DO SEU PRODUTO")
@@ -114,7 +114,7 @@ inicio
   LimpaTela
 FimProcedimento
 
-Procedimento PraOnde()
+Procedimento PraOnde() //Cadastro de Destinatario e seu destino
 inicio
   Escreva("DESTINATARIO: ")
     Leia(Destinatario)
@@ -122,7 +122,7 @@ inicio
     Leia(Destino)
 FimProcedimento
 
-Procedimento Fim()
+Procedimento Fim() //Mensagem Final
 inicio
   EscrevaL("-+-+-+-+-+-+-+-+-+-+-+-+")
   EscrevaL("    ENVIO CONCLUIDO!!   ")
@@ -153,19 +153,20 @@ inicio
 FimProcedimento
 
 inicio
-  Expectativa <- randi(15) + 1
-  Menu()
+  //Inicio do programa
+  Expectativa <- randi(15) + 1 //Expectativa aleatoria de chegada de encomenda
+  Menu() //Acessa o menu
   LimpaTela
-  Data()
-  Cadastro()
-  TipoPacote()
-  Para I de 1 ate 5 faca
+  Data() //Cadastra Data de hoje
+  Cadastro() //Cadastra os pacotes
+  TipoPacote() //Rotula os pacotes
+  Para I de 1 ate 5 faca //Assimilação de pacote e tipo na mesma posicao
     Se (Tip[I] <> "")entao
       Tip[I] <- VerTip(Tip[I])
     FimSe
   FimPara
 
-  Para I de 1 ate 5 faca
+  Para I de 1 ate 5 faca //Descricao do pacote
     Se (Tip[I] <> "")entao
       LimpaTela
       EscrevaL("Digite o que há dentro do item: ", I, " ( ", Tip[I], " )")
@@ -176,7 +177,7 @@ inicio
   LimpaTela
 
   Para I de 1 ate Qtd faca
-    VerDimensao()
+    VerDimensao() //Verifica suas dimensoes
   FimPara
   
   //Envio unico para todas as encomendas na (Versao 1)
@@ -190,7 +191,7 @@ inicio
     FimSe
   Ate(Envio > 0) e (Envio < 3)
 
-  PraOnde()
+  PraOnde() //Para qual local ? e quem vai receber?
   LimpaTela
-  Fim()
+  Fim() //Exibe o fim do programa
 fimalgoritmo

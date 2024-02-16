@@ -81,6 +81,9 @@ inicio
     Leia(Opcao)
 FimProcedimento
 
+//Funcoes em sua maioria foram utilizadas para guardar e validar resultados
+//simples alem de rotular os parametros em termos tecnicos ;)
+
 Funcao VerEscalaDor(numero: Inteiro): Logico
 var
   verEscala: Logico
@@ -203,6 +206,7 @@ inicio
   Repita
   Opcoes()
   Limpa()
+  //Coleta todas as informacoes
   Escolha Opcao
     Caso 1
       EscrevaL("EXEMPLO COLETA: 120x80")
@@ -256,6 +260,8 @@ inicio
   LimpaTela
   Ate(Opcao = 6)
   
+  //Assimilacao de posicoes
+
   VetResposta[0] <- ClassPA
   VetResposta[1] <- ClassBPM
   VetResposta[2] <- ClassRPM
@@ -273,6 +279,7 @@ inicio
   VetMsg[3] <- "TAX: "
   VetMsg[4] <- "ESCALA DOR: "
 
+  //Exibe os resultados
   Resultado()
 
   Se (VetResposta[0] <> "")entao
