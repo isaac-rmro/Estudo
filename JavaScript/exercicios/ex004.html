@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex004</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        input#botao {
+            height: 100px;
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Trabalhando com Dados v2.0v</h1>
+    <input type="button" id="botao" value="Clique para começar" onclick="nome()">
+    <p id="paragrafo">Aqui vai aparecer o resultado</p>
+
+    <script>
+        function nome () {
+            var nome = window.prompt('Digite seu nome')
+            var p = window.document.getElementById('paragrafo')
+            p.innerHTML = `Prazer em te conhecer ${nome}!`
+        }
+    </script>
+</body>
+</html>
