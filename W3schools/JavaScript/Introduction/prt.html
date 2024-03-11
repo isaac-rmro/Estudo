@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction</title>
+    <style>
+        #lamp {
+            height: 450px;
+            width: 250px;
+        }
+    </style>
+</head>
+<body>
+    <h1>What can javascript do</h1>
+    <p id="demo">javascript can change HTML content</p>
+    <input type="button" value="Click me!" onclick="inner()">
+
+    <p>javascript can change HTML attribute values.</p>
+    <p>in this case javascript changes the value of scr (source) attribute of an image</p>
+    <input type="button" id="on" value="turn on the light" onclick="on()">
+
+    <img src="off.png" id="lamp" alt="">
+
+    <input type="button" id="off" value="turn off the light" onclick="off()">
+
+    <p id="demoStyle">javascript can change the style of an HTML element.</p>
+    <input type="button" value="click me!" onclick="window.document.getElementById('demoStyle').style.fontSize = '35px'">
+
+    <p id="hidep">javascript can hide HTML elements</p>
+    <input type="button" id="bothide" value="click me to hide!" onclick="hide()">
+    <input type="button" id="botshow" value="click me to show!" onclick="show()">
+
+    <script>
+        function inner() {
+            p = window.document.getElementById("demo");
+            p.innerHTML = "hello javascript";
+        }
+
+        img = window.document.getElementById('lamp')
+
+        function on() {
+            img.src = 'on.png'
+        }
+
+        function off() {
+            img.src = 'off.png'
+        }
+
+        function hide() {
+            window.document.getElementById('hidep').style.display = 'none'
+        }
+        
+        function show() {
+            window.document.getElementById('hidep').style.display = 'block'
+            
+        }
+    </script>
+</body>
+</html>
