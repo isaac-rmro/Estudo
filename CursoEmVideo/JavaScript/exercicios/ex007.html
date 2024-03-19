@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex007</title>
+    <style>
+        body {
+            font: normal 12pt Arial;
+        }
+
+        input {
+            height: 80px;
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Média do aluno v1.0</h1>
+    <input type="button" id="botao" value="Calcula média" onclick="media()">
+    <section id="situacao">
+        <p>O resultado vai aparecer aqui...</p>
+        <p></p>
+        <p></p>
+    </section>
+
+    <script>
+        function media() {
+            var nome = window.prompt('Qual é seu nome?')
+            var nota1 = Number(window.prompt('Digite sua primeira nota'))
+            var nota2 = Number(window.prompt('Digite sua segunda nota'))
+            
+            var media = (nota1 + nota2) / 2
+
+            window.document.getElementsByTagName('p')[0].innerHTML = `Calculando a média final de ${nome}`
+            window.document.getElementsByTagName('p')[1].innerHTML = `As notas obtidas foram <mark>${nota1}</mark> e <mark>${nota2}</mark>`
+            window.document.getElementsByTagName('p')[2].innerHTML = `A média final sera <mark>${media}</mark>`
+        }
+    </script>
+</body>
+</html>

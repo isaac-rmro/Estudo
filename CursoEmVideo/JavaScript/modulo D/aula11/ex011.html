@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>País</title>
+</head>
+<body>
+    <h1>Nacionalidade ou Não?</h1>
+    Digite o país que nasceu: <input type="text" id="nacionalidade">
+    <input type="button" value="Confirmar" onclick="vernacionalidade()">
+
+    <div>
+        <p id="resposta"></p>
+    </div>
+
+    <script>
+        function vernacionalidade(){
+            var n = window.document.getElementById('nacionalidade').value;
+            var resposta = window.document.getElementById('resposta')
+            if (n == 'Brasil'){
+                resposta.innerHTML = 'Você é brasileiro'
+            } else {
+                resposta.innerHTML = 'Você é estrangeiro'
+            }
+        }
+    </script>
+</body>
+</html>
