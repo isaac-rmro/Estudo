@@ -46,7 +46,15 @@ nav {
 }
 
 main {
+    max-width: 300px;
+    min-width: 1000px;
+    margin: auto;
     background-color: white;
+}
+
+main img {
+    width: 100%;
+
 }
 
 main h1 {
